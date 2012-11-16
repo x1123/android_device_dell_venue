@@ -1,0 +1,88 @@
+## bin
+bin/qmuxd
+bin/lightsensor
+bin/netd
+bin/rild
+bin/calibrate
+bin/sensors_daemon
+## firmware
+etc/firmware/yamato_pfp.fw
+etc/firmware/yamato_pm4.fw
+etc/wlan/sdio-g-cdc-full11n-reclaim-roml-wme-aoe-pktfilter-keepalive-wapi.bin
+etc/wlan/sdio-g-cdc-roml-reclaim-wme-apsta-idsup-idauth.bin
+etc/wlan/nvram.txt
+## etc
+etc/01_qcomm_omx.cfg
+etc/vold.fstab
+etc/init.venue.fm.sh
+## key
+usr/idc/mXT224_touchscreen.idc
+usr/idc/qwerty.idc
+usr/keychars/surf_keypad.kcm.bin
+usr/keychars/qwerty.kcm
+usr/keychars/Virtual.kcm
+usr/keylayout/surf_keypad.kl
+usr/keylayout/qwerty.kl
+usr/keylayout/8k_handset.kl
+## lib
+lib/libauth.so
+lib/libcm.so
+lib/libbluedroid.so 
+lib/libdiag.so
+lib/libdsutils.so
+lib/libdsm.so
+lib/libdss.so
+lib/libgsdi_exp.so
+lib/libgstk_exp.so
+lib/libidl.so
+lib/libmmjpeg.so
+lib/libmmipl.so
+lib/libmmgsdilib.so
+lib/libnv.so
+lib/liboemcamera.so
+lib/liboncrpc.so
+lib/liboem_rapi.so
+lib/liboverlay.so
+lib/libpbmlib.so
+lib/libqueue.so
+lib/libqmi.so
+lib/libril.so
+lib/libril-qcril-hook-oem.so
+lib/libril-qc-1.so
+lib/libsc-a2xx.so
+lib/libwmsts.so
+lib/libwms.so
+## OMX
+lib/libOmxQcelp13Enc.so
+lib/libOmxQcelp13Dec.so
+lib/libOmxEvrcEnc.so
+lib/libOmxEvrcDec.so
+lib/libOmxAmrEnc.so
+lib/libOmxCore.so
+lib/libOmxVdec.so
+lib/libOmxVidEnc.so
+## omx shared
+lib/libomx_aacdec_sharedlibrary.so
+lib/libomx_avcdec_sharedlibrary.so
+lib/libomx_m4vdec_sharedlibrary.so
+lib/libomx_mp3dec_sharedlibrary.so
+lib/libomx_sharedlibrary.so
+## hw
+lib/hw/sensors.venue.so
+lib/hw/gps.venue.so
+## egl
+lib/egl/libGLESv2_adreno200.so
+lib/egl/libGLESv1_CM_adreno200.so
+lib/egl/libEGL_adreno200.so
+lib/egl/eglsubAndroid.so
+lib/egl/libC2D2.so
+lib/egl/libGLES_android.so
+lib/egl/libOpenVG.so
+lib/egl/libq3dtools_adreno200.so
+
+
+
+
+
+
+
