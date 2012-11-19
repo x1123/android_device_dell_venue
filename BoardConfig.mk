@@ -40,8 +40,8 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0X22600000
 
 # Kernel built in
-#---
-TARGET_KERNEL_SOURCE := kernel/dell/venue
+#- depending on your taste to put kernel sources
+TARGET_KERNEL_SOURCE := device/dell/msm22634
 TARGET_KERNEL_CONFIG := dell-venue_defconfig
 #----
 # Kernel prebuilt as fall back
