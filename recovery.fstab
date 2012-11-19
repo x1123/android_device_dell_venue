@@ -1,4 +1,12 @@
-# system/etc/vold.fstab this file
+# recovery.fstab this file
 #
+# NEED HELP !!!
 #
-dev_mount sdcard /mnt/sdcard auto /devices/platform/msm_sdcc.3/mmc_host
+#mount point  fstype    device    	             [device2]
+
+/boot        mtd         boot
+/recovery    mtd         recovery
+/cache       mtd         cache                   /dev/block/mtdblock7
+/system      yaffs2       system
+/firstboot   yaffs2       userdata
+/sdcard      vfat         /dev/block/mmcblk0p1    /dev/block/mmcblk0
