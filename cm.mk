@@ -16,8 +16,8 @@ $(call inherit-product, device/dell/venue/venue.mk)
 # Setup device specific product configuration.
 #
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0  
-PRODUCT_NAME := cm_venue
 PRODUCT_DEVICE := venue
+PRODUCT_NAME := cm_venue
 PRODUCT_BRAND := venue
 PRODUCT_MODEL := Dell-Venue
 PRODUCT_MANUFACTURER := DELL
