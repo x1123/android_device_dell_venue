@@ -12,9 +12,10 @@ etc/wlan/sdio-g-cdc-full11n-reclaim-roml-wme-aoe-pktfilter-keepalive-wapi.bin
 etc/wlan/sdio-g-cdc-roml-reclaim-wme-apsta-idsup-idauth.bin
 etc/wlan/nvram.txt
 ## etc
-etc/01_qcomm_omx.cfg
+etc/audio_effects.conf
 etc/vold.fstab
 etc/init.venue.fm.sh
+etc/bt/4329B1_002.002.023.0505.0522.hcd
 ## key
 usr/idc/mXT224_touchscreen.idc
 usr/idc/qwerty.idc
@@ -27,6 +28,7 @@ usr/keylayout/8k_handset.kl
 ## lib
 lib/libauth.so
 lib/libcm.so
+lib/libcamera.so
 lib/libbluedroid.so 
 lib/libdiag.so
 lib/libdsutils.so
@@ -57,16 +59,9 @@ lib/libOmxQcelp13Enc.so
 lib/libOmxQcelp13Dec.so
 lib/libOmxEvrcEnc.so
 lib/libOmxEvrcDec.so
-lib/libOmxAmrEnc.so
 lib/libOmxCore.so
 lib/libOmxVdec.so
 lib/libOmxVidEnc.so
-## omx shared
-lib/libomx_aacdec_sharedlibrary.so
-lib/libomx_avcdec_sharedlibrary.so
-lib/libomx_m4vdec_sharedlibrary.so
-lib/libomx_mp3dec_sharedlibrary.so
-lib/libomx_sharedlibrary.so
 ## hw
 lib/hw/sensors.venue.so
 lib/hw/gps.venue.so
@@ -74,11 +69,14 @@ lib/hw/gps.venue.so
 lib/egl/libGLESv2_adreno200.so
 lib/egl/libGLESv1_CM_adreno200.so
 lib/egl/libEGL_adreno200.so
-lib/egl/eglsubAndroid.so
-lib/egl/libC2D2.so
-lib/egl/libGLES_android.so
-lib/egl/libOpenVG.so
 lib/egl/libq3dtools_adreno200.so
+## vendor
+vendor/etc/audio_effects.conf
+vendor/firmware/fw_bcm4329.bin
+vendor/firmware/fw_bcm4329_apsta.bin
+
+
+
 
 
 
