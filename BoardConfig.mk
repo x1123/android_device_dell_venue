@@ -5,22 +5,19 @@ USE_CAMERA_STUB := false
 TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := qsd8k
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
-TARGET_NO_RECOVERY := false
-TARGET_NO_RADIOIMAGE := true
-TARGET_PROVIDES_LIBAUDIO := false
 # CPU Stuff
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_CPU_SMP := true
-ARCH_ARM_HAVE_NEON := true
+TARGET_BOOTLOADER_BOARD_NAME := venue
 TARGET_CORTEX_CACHE_LINE_32 := true
 # Boot stuff
 BOARD_KERNEL_CMDLINE := androidboot.hardware=venue 
 BOARD_KERNEL_BASE := 0x20000000
 BOARD_PAGE_SIZE := 2048
-TARGET_BOOTLOADER_BOARD_NAME := venue
+BOARD_FORCE_RAMDISK_ADDRESS := 0x11000000
 #---
 TARGET_GLOBAL_CFLAGS +=-mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS +=-mfpu=neon -mfloat-abi=softfp
@@ -46,14 +43,12 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0X22600000
 #---
 TARGET_KERNEL_SOURCE := kernel/dell/venue
 TARGET_KERNEL_CONFIG := dell-venue_defconfig
-KERNEL_DEFCONFIG := dell-venue_defconfig
 #----
 # Kernel prebuilt as fall back
 TARGET_PREBUILT_KERNEL := device/dell/venue/prebuilt/kernel
 TARGET_PREBUILT_RECOVERY_KERNEL := device/dell/venue/prebuilt/recovery_kernel
 #----
-
-TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_EXT4 := false
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := '"font_7x16.h"'
 
@@ -67,7 +62,7 @@ USE_OPENGL_RENDERER := true
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_OVERLAY := false
 TARGET_HAVE_BYPASS  := false
-TARGET_USES_C2D_COMPOSITION := false
+TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_GENLOCK := true
 TARGET_QCOM_HDMI_OUT := false
 TARGET_FORCE_CPU_UPLOAD := true
@@ -85,31 +80,19 @@ BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := venue
 # AMSS version to use for GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
-#---
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
-#---
-BOARD_USE_LEGACY_TOUCHSCREEN := true
-BOARD_USE_OPENSSL_ENGINE := true
-TARGET_PROVIDES_INIT_RC := true
-BOARD_HAS_FLIPPED_SCREEN := true
-TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
-#---
-# Venue Camera
-BOARD_CAMERA_USE_GETBUFFERINFO := true
-BOARD_USE_CAF_LIBCAMERA_GB_REL := true
-BOARD_USE_CAF_LIBCAMERA := true
-# Avoid glitch. Essential config!
-BOARD_NO_RGBX_8888 := true
-BOARD_NO_32BPP := true
 # -- Trivial WPA need to solve
-
-BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-WPA_SUPPLICANT_VERSION      := VER_0_5_X
 BOARD_WLAN_DEVICE := bcm4329
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
-WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wlan/sdio-g-cdc-full11n-reclaim-roml-wme-aoe-pktfilter-keepalive-wapi.bin nvram_path=/etc/wlan/nvram.txt"
-WIFI_DRIVER_MODULE_NAME := "dhd"
-WIFI_DRIVER_FW_STA_PATH := "/system/etc/wlan/sdio-g-cdc-roml-reclaim-wme-apsta-idsup-idauth.bin"
+WIFI_EXT_MODULE_MODULE_PATH := /system/lib/modules/librasdioif.ko
+WIFI_DRIVER_MODULE_PATH := /system/lib/modules/dhd.ko
+WIFI_EXT_MODULE_NAME := librasdioif
+WIDI_DRIVER_MODULE_NAME := dhd
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
+BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+WPA_SUPPLICANT_VERSION      := VER_0_8_X
+BOARD_WEXT_NO_COMBO_SCAN := true
+#--- Vold stuffs
+BOARD_VOLD_MAX_PARTITIONS := 16
+
 
 
 #############DO NOT REMOVE ###########################
