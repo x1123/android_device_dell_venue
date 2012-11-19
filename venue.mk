@@ -22,20 +22,18 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init/init.rc:root/init.rc \
     $(LOCAL_PATH)/init/ueventd.rc:root/ueventd.rc \
     $(LOCAL_PATH)/init/init.venue.rc:root/init.venue.rc \
-    $(LOCAL_PATH)/init/init.logo.rle:root/init.logo.rle \
-    $(LOCAL_PATH)/init/init.logo+factory.rle:root/init.logo_factory.rle
+    $(LOCAL_PATH)/init/initlogo.rle:root/initlogo.rle \
+    $(LOCAL_PATH)/init/initlogo_factory.rle:root/initlogo_factory.rle
 
 # Configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/8k_handset.kl:system/usr/keylayout/8k_handset.kl \
     $(LOCAL_PATH)/configs/surf_keypad.kl:system/usr/keylayout/surf_keypad.kl \
-    $(LOCAL_PATH)/configs/qwerty.kl:system/usr/keylayout/qwerty.kl \
     $(LOCAL_PATH)/configs/surf_keypad.kcm.bin:system/usr/keychars/surf_keypad.kcm.bin \
     $(LOCAL_PATH)/configs/mXT224_touchscreen.idc:system/usr/idc/mXT224_touchscreen.idc \
-    $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/configs/01_qcomm_omx.cfg:system/etc/01_qcomm_omx.cfg \
-    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/init.venue.fm.sh:system/etc/init.venue.fm.sh
+    $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
+    $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab 
+    
 
 
 # Wifi
@@ -67,56 +65,38 @@ $(call inherit-product, build/target/product/full.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
-    frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+    frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/base/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-    frameworks/base/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
+    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/base/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
-    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 #Hardware
 PRODUCT_PACKAGES += \
-    camera.qsd8k \
-    gralloc.qsd8k \
-    copybit.qsd8k \
-    hwcomposer.qsd8k \
     libgenlock \
     liboverlay \
-    libtilerenderer \
-    libQcomUI \
-    audio.primary.venue \
+    gralloc.qsd8k \
+    hwcomposer.qsd8k \
+    copybit.qsd8k \ 
+    camera.qsd8k \
+    gps.venue \
     audio.a2dp.default \
-    libOmxCore \
-    libOmxVenc \
-    libOmxVidEnc \
-    libcamera
+    audio.primary.qsd8k \
+    audio_policy.qsd8k 
+    
 # OMX 
 PRODUCT_PACKAGES += \
     libstagefrighthw \
-    libmm-omxcore \
+    libmm-Omxcore \
     libOmxCore
-
-##kernel
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/dell/venue/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := cm_venue
@@ -124,18 +104,3 @@ PRODUCT_BRAND := venue
 PRODUCT_DEVICE := venue
 PRODUCT_MODEL := Dell-Venue
 PRODUCT_MANUFACTURER := DELL
-#
-# Copyright (C) 2009 The Android Open Source Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
