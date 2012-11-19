@@ -11,12 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-ifneq ($(filter venue,$(TARGET_DEVICE)),)
-    include $(all-subdir-makefiles),$(call my-dir))
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),venue)
+include $(call first-makefiles-under,$(call my-dir))
 endif
-
-
-#CM9 default policy
-#ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),venue)
-#include $(call first-makefiles-under,$(call my-dir))
-#endif
