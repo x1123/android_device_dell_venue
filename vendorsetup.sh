@@ -1,1 +1,1 @@
-add_lunch_combo cm_venue-userdebug
+add_lunch_combo dell_venue-eng
