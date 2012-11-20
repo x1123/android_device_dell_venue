@@ -17,7 +17,6 @@ TARGET_CORTEX_CACHE_LINE_32 := true
 BOARD_KERNEL_CMDLINE := androidboot.hardware=venue 
 BOARD_KERNEL_BASE := 0x20000000
 BOARD_PAGE_SIZE := 2048
-BOARD_FORCE_RAMDISK_ADDRESS := 0x11000000
 #---
 TARGET_GLOBAL_CFLAGS +=-mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS +=-mfpu=neon -mfloat-abi=softfp
@@ -45,8 +44,8 @@ TARGET_KERNEL_SOURCE := device/dell/msm22634
 TARGET_KERNEL_CONFIG := dell-venue_defconfig
 #----
 # Kernel prebuilt as fall back
-TARGET_PREBUILT_KERNEL := device/dell/venue/prebuilt/kernel
-TARGET_PREBUILT_RECOVERY_KERNEL := device/dell/venue/prebuilt/recovery_kernel
+#TARGET_PREBUILT_KERNEL := device/dell/venue/prebuilt/kernel
+#TARGET_PREBUILT_RECOVERY_KERNEL := device/dell/venue/prebuilt/recovery_kernel
 #----
 TARGET_USERIMAGES_USE_EXT4 := false
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -60,7 +59,7 @@ USE_OPENGL_RENDERER := true
 
 # QCOM stuffs
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_USES_OVERLAY := false
+TARGET_USES_OVERLAY := true
 TARGET_HAVE_BYPASS  := false
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_GENLOCK := true
@@ -70,7 +69,7 @@ BOARD_USES_QCOM_LIBS := true
 BOARD_USE_QCOM_PMEM := true
 BOARD_EGL_CFG := device/dell/venue/configs/egl.cfg
 #-- TO DO and Check
-TARGET_GRALLOC_USES_ASHMEM := true
+TARGET_GRALLOC_USES_ASHMEM := false
 #-- End of TO DO and Check
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -80,17 +79,20 @@ BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := venue
 # AMSS version to use for GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
-# -- Trivial WPA need to solve
+# --builable for ics wpa_0_8_x
 BOARD_WLAN_DEVICE := bcm4329
 WIFI_EXT_MODULE_MODULE_PATH := /system/lib/modules/librasdioif.ko
 WIFI_DRIVER_MODULE_PATH := /system/lib/modules/dhd.ko
 WIFI_EXT_MODULE_NAME := librasdioif
-WIDI_DRIVER_MODULE_NAME := dhd
+WIDI_DRIVER_MODULE_NAME := dhdWIFI_DRIVER_FW_PATH_STA := /system/vendor/firmware/fw_bcm4329.bin
+WIFI_DRIVER_FW_PATH_AP := /system/vendor/firmware/fw_bcm4329_apsta.bin
+WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wlan/sdio-g-cdc-full11n-reclaim-roml-wme-aoe-pktfilter-keepalive-wapi.bin nvram_path=/etc/wlan/nvram.txt"
+WIFI_AP_DRIVER_MODULE_ARG := /system/etc/wlan/sdio-g-cdc-roml-reclaim-wme-apsta-idsup-idauth.bin
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WEXT_NO_COMBO_SCAN := true
 #--- Vold stuffs
-BOARD_VOLD_MAX_PARTITIONS := 16
+#BOARD_VOLD_MAX_PARTITIONS := 16
 
 
