@@ -84,7 +84,8 @@ BOARD_WLAN_DEVICE := bcm4329
 WIFI_EXT_MODULE_MODULE_PATH := /system/lib/modules/librasdioif.ko
 WIFI_DRIVER_MODULE_PATH := /system/lib/modules/dhd.ko
 WIFI_EXT_MODULE_NAME := librasdioif
-WIDI_DRIVER_MODULE_NAME := dhdWIFI_DRIVER_FW_PATH_STA := /system/vendor/firmware/fw_bcm4329.bin
+WIDI_DRIVER_MODULE_NAME := dhd
+WIFI_DRIVER_FW_PATH_STA := /system/vendor/firmware/fw_bcm4329.bin
 WIFI_DRIVER_FW_PATH_AP := /system/vendor/firmware/fw_bcm4329_apsta.bin
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wlan/sdio-g-cdc-full11n-reclaim-roml-wme-aoe-pktfilter-keepalive-wapi.bin nvram_path=/etc/wlan/nvram.txt"
 WIFI_AP_DRIVER_MODULE_ARG := /system/etc/wlan/sdio-g-cdc-roml-reclaim-wme-apsta-idsup-idauth.bin
